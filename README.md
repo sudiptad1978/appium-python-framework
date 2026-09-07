@@ -477,6 +477,14 @@ Console output is human-friendly; the file logs are machine-readable
 
 ---
 
+## Contributors
+
+Built by **Sudipta Dutta** ([@sudiptad1978](https://github.com/sudiptad1978)) with
+engineering support from the **Arena AI Agent** ([Arena.ai](https://arena.ai),
+Agent Mode). See [CONTRIBUTORS.md](CONTRIBUTORS.md) for the full list.
+
+---
+
 ## Recommended next steps
 
 1. **Point it at your app**: replace the TheApp pages with your screens and
