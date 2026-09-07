@@ -1,0 +1,18 @@
+# Core automation stack -------------------------------------------------------
+# Appium Python client (v5+/v6 uses Selenium 4.26+ under the hood and speaks
+# the W3C protocol. TouchAction/MultiAction were removed in v4 - this framework
+# therefore uses W3C Actions + mobile: extensions exclusively.)
+appium-python-client>=5.1,<7
+
+# Selenium WebDriver bindings (pinned <5 to match the Appium client's matrix).
+selenium>=4.26,<5
+
+# Test runner
+pytest>=8.2,<10
+
+# Configuration
+PyYAML>=6.0
+python-dotenv>=1.0
+
+# HTTP calls for the Appium server health checks (utils/appium_server.py)
+requests>=2.31

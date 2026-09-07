@@ -1,0 +1,56 @@
+# ============================================================================
+# ios.yaml - iOS target configuration
+# ----------------------------------------------------------------------------
+# !! WHAT YOU MUST CHANGE BEFORE RUNNING !!
+#   1. device_name -> the name of YOUR simulator (xcrun simctl list devices)
+#   2. app_path    -> path to YOUR .app/.app.zip (simulator) or .ipa (device)
+#   3. udid        -> leave "" for simulators you want Appium to pick; set it
+#                     when several simulators/real devices are connected
+# For REAL iPhones you additionally need the signing values at the bottom.
+# ============================================================================
+
+platform_name: iOS               # do not change
+automation_name: XCUITest        # Appium 2 driver name (not an "option")
+
+# Simulator NAME as shown by: xcrun simctl list devices available
+# Use the exact name + iOS version, e.g. "iPhone 15 Pro" or
+# "iPhone 16 (18.0)" depending on your Xcode version. CHANGE ME.
+device_name: iPhone 15 Pro       # CHANGE ME -> YOUR_DEVICE_NAME
+
+# Prefer UDID when set (simulators and devices both have one):
+# xcrun simctl list devices | grep -i booted   (or use Xcode -> Devices)
+# udid: ""
+
+# Path to the app under test. Relative paths resolve against the framework
+# root. For simulators pass the built .app bundle or a .app.zip; for real
+# devices pass a signed .ipa. Leave "" to launch the installed app (then
+# bundle_id is used).
+app_path: apps/TheApp.app.zip    # CHANGE ME -> YOUR_APP_PATH
+
+# Bundle identifier of YOUR app (Xcode -> target -> General -> Bundle Id).
+bundle_id: com.appiumpro.the_app # CHANGE ME -> YOUR_BUNDLE_ID
+
+# no_reset: don't clear app state between sessions. full_reset: full wipe.
+no_reset: true
+full_reset: false
+
+# Dismiss system permission alerts automatically (location, contacts, ...).
+auto_accept_alerts: true
+
+# ---------------------------------------------------------------------------
+# REAL DEVICE signing (uncomment only when testing on physical iPhones):
+# Your Apple developer team id (Xcode -> target -> Signing & Capabilities):
+# xcode_org_id: YOUR_TEAM_ID
+# xcode_signing_id: iPhone Developer
+# If your app is not ad-hoc signed you must also install a development
+# provisioning profile on the device before running.
+#
+# WebDriverAgent port (default: auto-assigned). Change only on conflicts:
+# wda_local_port: 8100
+#
+# Any other Appium capability (merged verbatim):
+# additional_capabilities:
+#   appium:newCommandTimeout: 180
+#   appium:usePrebuiltWDA: true
+# ---------------------------------------------------------------------------
+additional_capabilities: {}

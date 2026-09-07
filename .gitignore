@@ -1,0 +1,26 @@
+# Secrets / local overrides
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Test tooling caches
+.pytest_cache/
+
+# Runtime output (kept out of git; recreated automatically)
+logs/
+artifacts/
+
+# Local app binaries - never commit large APKs/IPAs
+apps/*
+!apps/README.md
+!apps/.gitkeep
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

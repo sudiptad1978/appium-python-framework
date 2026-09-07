@@ -1,0 +1,52 @@
+# ============================================================================
+# android.yaml - Android target configuration
+# ----------------------------------------------------------------------------
+# !! WHAT YOU MUST CHANGE BEFORE RUNNING !!
+#   1. device_name  -> the id of YOUR emulator (`adb devices`) or real device
+#   2. app_path     -> path to YOUR .apk (or set APP_PATH=... in .env / CI)
+#   3. udid         -> leave "" for emulators; set it for real devices
+# If you already installed the app on the device you may set app_path: "" and
+# Appium will launch the installed app via app_package + app_activity.
+# ============================================================================
+
+platform_name: Android            # do not change
+automation_name: UiAutomator2     # Appium 2 driver name (not an "option")
+
+# adb device serial, e.g. "emulator-5554". Get yours with: adb devices
+# An emulator created in Android Studio is usually named Pixel_X_API_Y
+# (display name) but its adb serial is always emulator-XXXX.
+device_name: emulator-5554        # CHANGE ME -> YOUR_DEVICE_NAME
+
+# UDID for real devices (uncomment): "R58M1234567" style serial from `adb devices`
+# udid: ""
+
+# Path to the app under test. Relative paths resolve against the framework
+# root; absolute paths are used as-is. Leave "" to launch the app that is
+# already installed on the device (then app_package/app_activity are used).
+app_path: apps/TheApp.apk         # CHANGE ME -> YOUR_APP_PATH
+
+# Package and launch activity of YOUR app. Example values below belong to the
+# TheApp demo application (https://github.com/appium-pro/TheApp).
+app_package: com.appiumpro.the_app   # CHANGE ME -> YOUR_APP_PACKAGE
+app_activity: com.appiumpro.the_app.MainActivity  # CHANGE ME -> YOUR_APP_ACTIVITY
+
+# no_reset: don't clear app data / state between sessions (keeps login state,
+# skips permission dialogs on relaunch). Full app reset = reset between tests.
+no_reset: true
+full_reset: false
+
+# Auto-grant the permissions the app requests at install time (Android 6+).
+auto_grant_permissions: true
+
+# ---------------------------------------------------------------------------
+# Any other Appium capability you need can be added under
+# `additional_capabilities` and is merged verbatim into the session request:
+#
+# additional_capabilities:
+#   appium:appWaitActivity: com.example.app.SplashActivity
+#   appium:newCommandTimeout: 180
+#   appium:unicodeKeyboard: true
+#   appium:resetKeyboard: true
+#   appium:chromedriverExecutable: /path/to/chromedriver   # hybrid apps only
+# ---------------------------------------------------------------------------
+additional_capabilities: {}

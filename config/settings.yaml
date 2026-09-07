@@ -1,0 +1,64 @@
+# ============================================================================
+# settings.yaml - global framework settings (platform-agnostic)
+# ----------------------------------------------------------------------------
+# Everything in this file has a sensible default for local development.
+# Precedence (highest wins): command-line flags > environment variables
+# (.env / CI) > this file > platform YAML files (config/android.yaml, ios.yaml)
+# ============================================================================
+
+appium:
+  # Address the Appium server listens on. 127.0.0.1 is fine for local runs;
+  # use 0.0.0.0 when the server runs on a remote CI machine / grid node.
+  host: 127.0.0.1
+
+  # Standard Appium 2.x port.
+  port: 4723
+
+  # Leave empty for Appium 2.x (W3C endpoints live at the server root).
+  # Set to "/wd/hub" only if you run an Appium 1.x server.
+  base_path: ""
+
+  # Absolute path to the `appium` executable. Empty = search $PATH.
+  # Windows note: this is normally `...\AppData\Roaming\npm\appium.cmd`.
+  binary: ""
+
+  # Server lifecycle behaviour:
+  #  - auto_start: true  -> the suite starts Appium automatically when no
+  #                         server answers on host:port, and stops it again
+  #                         at session end (only if THIS run started it).
+  #  - external: true    -> never start/stop; an external server (CI service,
+  #                         Appium Desktop, docker, remote grid) is expected.
+  #                         auto_start is ignored in that case.
+  auto_start: true
+  external: false
+
+  # How long to wait for the server to become healthy after launch / for an
+  # external server to answer before giving up.
+  start_timeout_seconds: 30
+  stop_timeout_seconds: 10
+
+  # Verbosity of the spawned Appium server process (debug|info|warn|error).
+  # "debug" is very useful when a driver session fails.
+  log_level: info
+
+  # Optional: restrict which drivers Appium loads, e.g. [uiautomator2] or
+  # [uiautomator2, xcuitest]. Empty list = load every installed driver.
+  use_drivers: []
+
+paths:
+  # Relative to the framework root (the directory containing this file's
+  # parent). The framework creates these automatically on startup.
+  logs: logs                 # suite log + appium server log
+  screenshots: artifacts/screenshots
+  page_source: artifacts/page_source
+
+timeouts:
+  # Defaults used by BasePage.wait_for_* and friends. Overridable per call.
+  default: 15                # seconds
+  short: 5
+  long: 30
+
+logging:
+  # Framework log level: DEBUG | INFO | WARNING | ERROR
+  level: INFO
+  console: true              # mirror logs to stdout
